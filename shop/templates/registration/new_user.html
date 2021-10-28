@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends "shop/base.html" %}
+
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+<h2>Register New User</h2>
+    {%  if form.errors %}
+    <p>
+    Passwords didn't match.
+    Please try again.
+    </p>
+
+    {%  endif %}
+    <form action="" method="post">
+        {{  form.as_p }}
+        {%  csrf_token %}
+        <input type="hidden" name="next" value="{{  next }}"/>
+        <p></p><input type="submit" value="Register">
+    </form>
+
+    {# Assumes you setup the password_reset view in your URLconf #}
+{#<p><a href="{% url 'password_reset' %}">Forgot password?</a></p>#}
+
+{% endblock content %}
