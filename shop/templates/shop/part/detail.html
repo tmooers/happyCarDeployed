@@ -1,0 +1,17 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+{{ part.part_name }}
+{% endblock %}
+
+{% block content %}
+    <div class="product-detail">
+        <h1>{{ part.part_name }}</h1>
+        <p>{{ part.part_description }}</p>
+        <p></p>
+        <form action="{% url "cart:cart_add" part.id %}" method="post">
+        {{ cart_part_form }}
+        {% csrf_token %}
+        <input type="submit" value="Add to cart">
+    </div>
+{% endblock %}

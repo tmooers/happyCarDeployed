@@ -1,0 +1,16 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Category List</h1>
+    {% if parttype_list %}
+        <ul>
+        {% for parttype in parttype_list %}
+            <li>
+                <a href="{{ parttype.get_absolute_url }}">{{ parttype.name }}</a>
+            </li>
+        </ul>
+        {% endfor %}
+    {% else %}
+        <p>There are currently no categories in our shop.</p>
+    {% endif %}
+{%  endblock %}

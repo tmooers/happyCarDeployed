@@ -46,7 +46,8 @@ class PartType(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('shop:part_list_by_category', args=[self.slug])
+        return "/categories/%i/" % self.id
+
 
 
 # Part model
@@ -75,6 +76,9 @@ class Part(models.Model):
 
     class Meta:
         ordering = ('part_name',)
+
+    def get_absolute_url(self):
+        return "/parts/%i/" % self.id
 
 
 # define the Cart model
@@ -144,3 +148,10 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return str(self.order)
+
+class NewsLetterUsers(models.Model):
+    email = models.EmailField()
+    date_added = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.email

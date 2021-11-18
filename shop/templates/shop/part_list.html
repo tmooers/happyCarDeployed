@@ -1,0 +1,16 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+    <h1>Part List</h1>
+    {% if part_list %}
+        <ul>
+        {% for part in part_list %}
+            <li>
+                <a href="{{ part.get_absolute_url }}">{{ part.part_name }}</a> - {{ part.part_description }}
+            </li>
+        </ul>
+        {% endfor %}
+    {% else %}
+        <p>There are currently no parts in our shop.</p>
+    {% endif %}
+{%  endblock %}
